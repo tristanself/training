@@ -38,7 +38,7 @@ variable "aws_region" {
 }
 
 variable "num_webs" {
-  default = "2"
+  default = "3"
 }
 
 provider "aws" {
@@ -60,13 +60,6 @@ resource "aws_instance" "web" {
     "Name"          = "web ${count.index + 1}/${var.num_webs}"
     "SecurityLevel" = "Well_Secret"
   }
-}
-
-resource "dnsimple_record" "web" {
-  domain = "thewebsiteofdoom.com"
-  name = "www"
-  type = "A"
-  value = "${aws_instance.web.0.public_ip}"
 }
 
 output "public_ip" {
