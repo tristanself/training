@@ -17,7 +17,6 @@
 #
 #     terraform-training-zebra
 #
-
 terraform {
   backend "atlas" {
     name = "tristanself/training"
